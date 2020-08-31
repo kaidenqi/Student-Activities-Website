@@ -1,0 +1,77 @@
+<div style="margin-left: 10%; margin-top:2em; width:80%;">
+
+<div>
+    <mat-form-field>
+        <a>Start Date:</a>
+        <input matInput type="date" [(ngModel)]="sdate" ></mat-form-field><span style="margin-left: 20px;"></span>
+        <mat-form-field>
+            <a>End Date:</a>
+            <input matInput type="date" [(ngModel)]="edate" ></mat-form-field>
+</div>
+<button mat-raised-button color="accent" (click)="searchActivities()"> Search to join</button>
+<button mat-raised-button color="accent" (click)="reservedEvent()" style="margin-left:20px"> Show my event</button>
+
+<br>
+<div *ngIf = showSearch >
+<h1 style="font-size: 15px; margin-top: 1em">Search Result:</h1>
+<br>
+<table class="table">
+    <thead style="font-size: 15px; padding-left:-100px">
+            <tr>Date<span style="margin-left: 100px; margin-top:1em"></span>Event Info<span style="margin-left: 130px"></span>Join</tr>
+    </thead>
+    <tbody style="display: flex">
+        <div style="width: 100px; margin-left:-10px">
+        <tr *ngFor="let e of showdate">
+            <td>{{ e }}</td>
+        </tr>
+        </div>
+        <div style="width: 200px; margin-left:10px">
+        <tr *ngFor="let i of showinfo">
+            <td>{{ i }}</td>
+        </tr>
+        </div>
+        <div style="width: 200px; margin-left:20px">
+            <tr *ngFor="let c of checker">
+                <input
+                type="checkbox"
+                (change)="changeCheckbox($event, c)"
+                 [(ngModel)]="c.join"
+                >
+            </tr>
+        </div>
+    </tbody>
+</table>
+<button mat-raised-button color="accent" style="margin-left: 400px"(click)=joinActivities()> Join </button>
+<a *ngIf=joined style="margin-left:20px">joined!</a>
+</div>
+
+<hr style="margin-top:2em">
+
+<div *ngIf=showReservation>
+    <h1 style="font-size: 15px; margin-top: 2em">Reserved Events:</h1>
+    <a>Date<span style="margin-left: 150px"></span>Event Info</a>
+    <ul style="list-style: none" *ngFor="let i of registedEvents">
+        <li style="margin-left: -40px">{{i.date}}<span style="margin-left: 100px"></span>{{i.info}}</li>
+    </ul>
+</div>
+<!-- 
+<hr style="margin-top:20em">
+<h1 style="font-size: 20px">this area is for create database</h1>
+<form (submit)="createActivity(createForm)" #createForm="ngForm">
+    <mat-form-field>
+        <a>Date:</a>
+        <input matInput type="date" name="date" ngModel></mat-form-field>
+    <span style="margin-left: 20px"></span>
+    <mat-form-field>
+        <a>Info:</a>
+        <input matInput type="text" name="info" ngModel></mat-form-field>
+    <span style="margin-left: 20px"></span>
+    <mat-form-field>
+        <a>activity id:</a>
+        <input matInput type="text" name="id" ngModel></mat-form-field>
+    <br>
+    <button mat-raised-button color="accent" type="submit">Save</button>
+    <br>
+</form>
+
+</div> -->

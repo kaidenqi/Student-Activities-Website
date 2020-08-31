@@ -1,0 +1,84 @@
+<div style="margin-left: 10%; margin-top:2em; width:80%;">
+
+
+<div>
+    <mat-checkbox [(ngModel)]="checked2">$2 ticket for Zone1</mat-checkbox>
+    <span style="margin-left:30px"></span>
+    <input type="number" placeholder="0" [(ngModel)]="twoQ"   (click)="display()">
+    <br>
+    <mat-checkbox [(ngModel)]="checked4" >$4 ticket for Zone2</mat-checkbox>
+    <span style="margin-left:30px"></span>
+    <input type="number" placeholder="0" [(ngModel)]="fourQ"   (click)="display()">
+    <br>
+    <mat-checkbox [(ngModel)]="checked6">$6 ticket for Zone3</mat-checkbox>
+    <span style="margin-left:30px"></span>
+    <input type="number" placeholder="0" [(ngModel)]="sixQ"   (click)="display()">
+    <br>
+    <mat-checkbox [(ngModel)]="checked40">$40 bus card </mat-checkbox>
+    <span style="margin-left:65px"></span>
+    <input type="number" placeholder="0" [(ngModel)]="fortyQ"   (click)="display()">
+    <p>subtotal: {{subtotal}}</p>
+</div>
+
+
+<div *ngIf="checked2 || checked4 || checked6 ||checked40" style="margin-left: 30px">
+    <mat-form-field>
+        <a>Name on the card:</a>
+        <input matInput type="text" [(ngModel)]="nameOnCard" required>
+    </mat-form-field>
+    <span style="margin-left: 20px"></span>
+    <mat-form-field>
+        <a>Phone number:</a>
+        <input matInput type="text" [(ngModel)]="phone" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <a>Card number:</a>
+        <input matInput type="text" [(ngModel)]="cardNum" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <a>Expiration date(mm/yyyy):</a>
+        <input matInput type="text" [(ngModel)]="exp" required>
+    </mat-form-field>
+    <span style="margin-left: 20px"></span>
+    <mat-form-field>
+        <a>CVV:</a>
+        <input matInput type="text" [(ngModel)]="cvv" required>
+    </mat-form-field>
+    <br>
+    <a>Billing Info:</a>
+    <br>
+    <mat-form-field>
+        <a>Name:</a>
+        <input matInput type="text" [(ngModel)]="billingName" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <a>Address:</a>
+        <input matInput type="text" [(ngModel)]="address" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <a>City:</a>
+        <input matInput type="text" [(ngModel)]="city" required>
+    </mat-form-field>
+    <span style="margin-left: 20px"></span>
+    <mat-form-field>
+        <a>State:</a>
+        <input matInput type="text" [(ngModel)]="state" required>
+    </mat-form-field>
+    <span style="margin-left: 20px"></span>
+    <mat-form-field>
+        <a>Zipcode:</a>
+        <input matInput type="text" [(ngModel)]="zipcode" required>
+    </mat-form-field>
+    <br>
+
+    <br>
+    <button mat-raised-button color="accent" type="submit" style="margin-left: 30px; margin-top: 1em"
+    (click)="payBus()">Pay</button><a *ngIf=processed style="margin-left:20px">Payment Processed!</a>
+
+</div>
+
+</div>
